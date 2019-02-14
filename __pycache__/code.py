@@ -96,67 +96,85 @@ def get_filenames(a_dirname):
   return all_files
 
 
-# [12, 34, [56,67], 78]
-
+# [12, 34, [56, 67], 78] -> [12, 34, 56, 67, 78]
 def flatten(a_list_with_lists):
-    new_list = []
-    for n in a_list_with_lists: 
-        if isinstance(n,list):
-            for i in n:
-                new_list.append(i)
+  new_list = []
+  for n in a_list_with_lists:
+    if isinstance(n,list):
+      for i in n:
+        new_list.append(i)
     else:
-        new_list.append(n)
-    return new_list
+      new_list.append(n)
+  return new_list
 
-# [12, 34, [56,67], 78]
-
-a = [12, 34, [56,67], 78]
-
+# [12, 34, [56, 67], 78] ->   # hint: use print(..,end='')
+# 12
+# 34
+# 5667
+# 78
 def print_right(a_list_with_lists):
-    for i in a_list_with_lists:
-        string = ""
-        if isinstance(i,list):
-            for n in i:
-                sting = string + str(n)
-            if n == [-1]:
-                print(string)
-
-        else:
-            print(i)
+  for n in a_list_with_lists:
+    if isinstance(n,list):
+      for i in n:
+        print(i,end='')
+      print('')
+    else:
+      print(n)
 
 
+# single_row_stars(4) -> ****
+# single_row_stars(6) -> ******
 def single_row_stars(number):
-    for n in range(number):
-        print ("*",end ="")
+  for n in range(number):
+    print("*",end="")
 
-def square_of_stars(number):
-    for n in range(number):
-        for n in range(number):
-         print ("*",end="")
-        print("")
 
-def square_of_stars(number):
-    for n in range(number):
-        for n in range(number):
-         print ("*",end="")
-        print("")
+# single_row_of(4,"*")  -> ****
+# single_row_of(3,"-+") -> -+-+-+
+def single_row_of(number,string):
+  for n in range(number):
+    print(string,end="")
 
+
+# square_of_stars(4)
+# ->
+# ****
+# ****
+# ****
+# ****
+def square_of_stars(num):
+  for m in range(num):
+    for n in range(num):
+      print("*",end="")
+    print("")
+
+def rectangle_of_stars(rows,cols):
+  for m in range(rows):
+    for n in range(cols):
+      print("*",end="")
+    print("")
+
+
+# list_by_2([1,2,3]) -> [2,4,6]
 def list_by_2(a_list):
-    res = list()
-    for n in a_list:
-        res.append(n*2)
-    return res
-print(list_by_2)
+  new_list = []
+  for n in a_list:
+    t = n * 2
+    new_list.append(t)
+  return new_list
 
 
+# create_grid(4)
+# ->
+# [['-','-','-','-'],
+#  ['-','-','-','-'],
+#  ['-','-','-','-'],
+#  ['-','-','-','-']]
 def create_grid(size):
-    row = list()
-    grid = list()
-    for n in range(size):
-        row.append("-")
-    for m in range(size):
-        grid.append(row)
-    return grid
-
-print(create_grid)
-print_right
+  new_grid = []
+  for row in range(size):
+    new_sublist = []
+    for column in range(size):
+      new_sublist.append('-')
+    new_grid.append(new_sublist)
+  return new_grid
